@@ -51,7 +51,7 @@ class User extends Authenticatable
         'nombre' => ['required', 'string', 'max:255', 'regex:/^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$/'], 
         'apellido' => ['required', 'string', 'max:255', 'regex:/^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$/'],
         'email' => ['required', 'string', 'email', 'max:255', 'unique:users', 'regex:/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/'],
-        'numeroDocumento' => ['required', 'unique:users', 'numeric'],
+        'numeroDocumento' => ['required', 'numeric'],
         'idTipoDocumento' => ['required', 'exists:tipoDocumento,id'],
         'idTipoUsuario' => ['required', 'exists:tipoUsuario,id'],
         // 'estado' => ['required', 'in:0,1'],

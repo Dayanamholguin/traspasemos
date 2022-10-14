@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call(tipoDocumentoSeeder::class);
         $this->call(tipoUsuarioSeeder::class);
         $this->call(usuarioSeeder::class);
+        $this->call(departamentoSeeder::class);
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',

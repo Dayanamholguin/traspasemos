@@ -25,6 +25,7 @@
     <link href="/css/sb-admin-2.min.css" rel="stylesheet">
     <!--mis estilos-->
     <link href="/css/style.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     @yield('style')
 </head>
 
@@ -104,8 +105,8 @@
                         <a class="collapse-item" href="/estadoAprendiz">Estado del aprendiz</a>
                         <a class="collapse-item" href="/estadoFicha">Estado de la ficha</a>
                         <a class="collapse-item" href="/programa">Programa</a>
-                        <a class="collapse-item" href="#">Institución</a>
-                        <a class="collapse-item" href="#">NEE</a>
+                        <a class="collapse-item" href="/institucion">Institución</a>
+                        <a class="collapse-item" href="/nee">NEE</a>
                         <a class="collapse-item" href="#">Datos académicos</a>
                         <a class="collapse-item" href="#">Datos de contacto</a>
                         <a class="collapse-item" href="#">Ficha</a>
@@ -283,6 +284,7 @@
     {{-- <script src="/js/jquery-3.6.0.min"></script> --}}
     <!-- Bootstrap core JavaScript-->
     <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="/js/moment.js"></script>
     <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
@@ -308,6 +310,9 @@
             var contenedor = $('#contenedor_carga');
             contenedor.css('visibility','hidden');
             contenedor.css('opacity','0');
+        });
+        $(document).ready(function() {
+            $('select').select2();
         });
     </script>
     @yield('script')

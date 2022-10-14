@@ -8,6 +8,8 @@ use App\Http\Controllers\discapacidadController;
 use App\Http\Controllers\estadoAprendizController;
 use App\Http\Controllers\estadoFichaController;
 use App\Http\Controllers\programaController;
+use App\Http\Controllers\neeController;
+use App\Http\Controllers\institucionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -79,3 +81,21 @@ Route::get('/programa/editar/{id}', [programaController::class, 'editar']);
 Route::post('/programa/actualizar/{id}', [programaController::class, 'modificar']);
 Route::get('/programa/cambiar/estado/{id}/{estado}', [programaController::class, 'modificarEstado']);
 Route::get('/programa/ver/{id}', [programaController::class, 'ver']);
+//nee
+Route::get('/nee', [neeController::class, 'index']);
+Route::get('/nee/listar', [neeController::class, 'listar']);
+Route::get('/nee/crear', [neeController::class, 'crear']);
+Route::post('/nee/guardar', [neeController::class, 'guardar']);
+Route::get('/nee/editar/{id}', [neeController::class, 'editar']);
+Route::post('/nee/actualizar/{id}', [neeController::class, 'modificar']);
+Route::get('/nee/cambiar/estado/{id}/{estado}', [neeController::class, 'modificarEstado']);
+Route::get('/nee/ver/{id}', [neeController::class, 'ver']);
+//institucion
+Route::get('/institucion', [institucionController::class, 'index']);
+Route::get('/institucion/listar', [institucionController::class, 'listar']);
+Route::get('/institucion/crear', [institucionController::class, 'crear']);
+Route::post('/institucion/guardar', [institucionController::class, 'guardar']);
+Route::get('/institucion/editar/{id}', [institucionController::class, 'editar']);
+Route::post('/institucion/actualizar/{id}', [institucionController::class, 'modificar']);
+Route::get('/institucion/cambiar/estado/{id}/{estado}', [institucionController::class, 'modificarEstado']);
+Route::get('/institucion/ver/{id}', [institucionController::class, 'ver']);

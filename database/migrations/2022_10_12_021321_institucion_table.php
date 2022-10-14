@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('direccion');
             $table->string('telefono');
             $table->string('nombreRector');
+            $table->boolean('estado')->default(1);
         });
     }
 

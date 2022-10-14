@@ -116,13 +116,15 @@ class usuarioController extends Controller
                 'nombre' => ['required', 'string', 'max:255'],
                 'apellido' => ['required', 'string', 'max:255'],
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-                'numeroDocumento' => ['required', 'unique:users', 'numeric'],
+                'numeroDocumento' => ['required', 'numeric'],
                 'idTipoDocumento' => ['required', 'exists:tipoDocumento,id'],
                 'idTipoUsuario' => ['required', 'exists:tipoUsuario,id'],
             ];
             $this->validate($request, $campos);
+            $usuario=User::find($request->id);
         }
         $input = $request->all();
+        
         try {
             $usuario->update([
                 'nombre' => $input['nombre'],
