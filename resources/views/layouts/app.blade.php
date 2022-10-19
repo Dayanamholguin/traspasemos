@@ -40,11 +40,19 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/home">
+            {{-- <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/home">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
                 <div class="sidebar-brand-text mx-3">Traspasemos <sup></sup></div>
+            </a> --}}
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/home">
+                <div class="sidebar-brand-icon">
+                    <img src="/../img/logo.png" width="50" height="50">
+                </div>
+                {{-- <div class="sidebar-brand-text mx-3 tipoletra" style="color: white;">
+                    <img src="/../img/TraspASEMos.png" width="180" height="50">
+                </div> --}}
             </a>
 
             <!-- Divider -->
@@ -53,8 +61,9 @@
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
                 <a class="nav-link" href="/home">
-                    <i class="fas fa-user-circle"></i>
-                    <span>{{Auth::user()->nombre}}</span></a>
+                    <i class="fas fa-chart-pie"></i>
+                    {{-- <span>{{Auth::user()->nombre}}</span></a> --}}
+                    <span>Dashboard</span></a>
             </li>
 
             <!-- Divider -->
@@ -66,51 +75,105 @@
             </div>
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link" href="/usuario">
                     <i class="fas fa-user-friends"></i>
                     <span>Usuarios</span>
                 </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Seleccione:</h6>
-                        {{-- @if(Auth::user()->role=="Admin") --}}
-                           
-                        {{-- @endif --}}
-                        <a class="collapse-item" href="/usuario">Usuarios</a>
-                    </div>
-                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i class="fas fa-user-friends"></i>
+                    <span>Datos de contacto</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i class="fas fa-user-friends"></i>
+                    <span>Datos académicos</span>
+                </a>
             </li>
             <!-- Divider -->
             <hr class="sidebar-divider">
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Módulo
+                Módulo de reportes a aprendices
             </div>
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour"
-                    aria-expanded="true" aria-controls="collapseFour">
-                    <i class="fas fa-tv"></i>
-                    <span>Módulos varios</span>
+                <li class="nav-item">
+                    <a class="nav-link" href="#reporteSena">
+                        <i class="fas fa-user-friends"></i>
+                        {{-- <i class="fas fa-solid fa-person-circle-exclamation"></i> --}}
+                        <span>Creación de alertas</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#reporteInstitucional">
+                        <i class="fas fa-user-friends"></i>
+                        {{-- <i class="fas fa-solid fa-person-circle-exclamation"></i> --}}
+                        <span>Reporte institucional</span>
+                    </a>
+                </li>
+            </li>
+            <hr class="sidebar-divider">
+            <!-- Heading copy -->
+            <div class="sidebar-heading">
+                Módulo institucional
+            </div>
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <li class="nav-item">
+                    <a class="nav-link" href="/institucion">
+                        <i class="fas fa-user-friends"></i>
+                        {{-- <i class="fas fa-solid fa-person-circle-exclamation"></i> --}}
+                        <span>Instituciones educativas</span>
+                    </a>
+                </li>
+            </li>
+            <hr class="sidebar-divider">
+            <!-- Heading copy -->
+            <div class="sidebar-heading">
+                Módulo de configuración
+            </div>
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <li class="nav-item">
+                    <a class="nav-link" href="/programa">
+                        <i class="fas fa-user-friends"></i>
+                        {{-- <i class="fas fa-solid fa-person-circle-exclamation"></i> --}}
+                        <span>Programa de formación</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-user-friends"></i>
+                        {{-- <i class="fas fa-solid fa-person-circle-exclamation"></i> --}}
+                        <span>Fichas</span>
+                    </a>
+                </li>
+            </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Informes
+            </div>
+
+            
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-paste"></i>
+                    <span>Informes</span>
                 </a>
-                <div id="collapseFour" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Seleccione:</h6>
-                        {{-- @if(Auth::user()->role=="Admin") --}}
-                           
-                        {{-- @endif --}}
-                        <a class="collapse-item" href="/discapacidad">Discapacidad</a>
-                        <a class="collapse-item" href="/estadoAprendiz">Estado del aprendiz</a>
-                        <a class="collapse-item" href="/estadoFicha">Estado de la ficha</a>
-                        <a class="collapse-item" href="/programa">Programa</a>
-                        <a class="collapse-item" href="/institucion">Institución</a>
-                        <a class="collapse-item" href="/nee">NEE</a>
-                        <a class="collapse-item" href="#">Datos académicos</a>
-                        <a class="collapse-item" href="#">Datos de contacto</a>
-                        <a class="collapse-item" href="#">Ficha</a>
-                        <a class="collapse-item" href="#">Profesional</a>
+                        <h6 class="collapse-header">Seleccione por:</h6>
+                        <a class="collapse-item" href="#">General</a>
+                        <a class="collapse-item" href="#">Aprendiz</a>
+                        <a class="collapse-item" href="#">Institución</a>
                     </div>
                 </div>
             </li>
@@ -119,7 +182,7 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Reportes
+                Configuración
             </div>
 
             
@@ -127,17 +190,18 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
                     aria-expanded="true" aria-controls="collapseThree">
                     <i class="fas fa-paste"></i>
-                    <span>Reportes</span>
+                    <span>Configuración</span>
                 </a>
                 <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Seleccione:</h6>
-                        <a class="collapse-item" href="#">Reporte del SENA</a>
-                        <a class="collapse-item" href="#">Reporte Institucional</a>
+                        <a class="collapse-item" href="/nee">NEE</a>
+                        <a class="collapse-item" href="/discapacidad">Discapacidad</a>
+                        <a class="collapse-item" href="/estadoFicha">Estado de ficha</a>
+                        <a class="collapse-item" href="/estadoAprendiz">Estado del aprendiz</a>
                     </div>
                 </div>
-            </li>
-
+            </li>   
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
