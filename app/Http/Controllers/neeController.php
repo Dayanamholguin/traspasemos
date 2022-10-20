@@ -48,9 +48,9 @@ class neeController extends Controller
     {
         $request->validate(NEE::$rules);
         $input = $request->all();
-        $neeDescripcion = NEE::select('*')->where('descripcion',$request->descripcion)->where('id','<>',$request->id)->value('descripcion');        
-        if ($neeDescripcion!=null) {
-            Flash("Esta NEE «".$neeDescripcion."» ya está en uso, intente nuevamente")->error();
+        $neeNombre = NEE::select('*')->where('nombre',$request->nombre)->where('id','<>',$request->id)->value('nombre');        
+        if ($neeNombre!=null) {
+            Flash("Esta NEE «".$neeNombre."» ya está en uso, intente nuevamente")->error();
             return redirect("/nee/crear");
         }
         

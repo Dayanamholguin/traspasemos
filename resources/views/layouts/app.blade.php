@@ -82,13 +82,13 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">
-                    <i class="fas fa-user-friends"></i>
+                    <i class="fas fa-users"></i>
                     <span>Datos de contacto</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">
-                    <i class="fas fa-user-friends"></i>
+                    <i class="fas fa-user-graduate"></i>
                     <span>Datos académicos</span>
                 </a>
             </li>
@@ -103,14 +103,14 @@
             <li class="nav-item">
                 <li class="nav-item">
                     <a class="nav-link" href="#reporteSena">
-                        <i class="fas fa-user-friends"></i>
+                        <i class="fas fa-bell"></i>
                         {{-- <i class="fas fa-solid fa-person-circle-exclamation"></i> --}}
                         <span>Creación de alertas</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#reporteInstitucional">
-                        <i class="fas fa-user-friends"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
                         {{-- <i class="fas fa-solid fa-person-circle-exclamation"></i> --}}
                         <span>Reporte institucional</span>
                     </a>
@@ -125,7 +125,7 @@
             <li class="nav-item">
                 <li class="nav-item">
                     <a class="nav-link" href="/institucion">
-                        <i class="fas fa-user-friends"></i>
+                        <i class="fas fa-school"></i>
                         {{-- <i class="fas fa-solid fa-person-circle-exclamation"></i> --}}
                         <span>Instituciones educativas</span>
                     </a>
@@ -140,14 +140,14 @@
             <li class="nav-item">
                 <li class="nav-item">
                     <a class="nav-link" href="/programa">
-                        <i class="fas fa-user-friends"></i>
+                        <i class="fas fa-book-reader"></i>
                         {{-- <i class="fas fa-solid fa-person-circle-exclamation"></i> --}}
                         <span>Programa de formación</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">
-                        <i class="fas fa-user-friends"></i>
+                        <i class="fas fa-book"></i>
                         {{-- <i class="fas fa-solid fa-person-circle-exclamation"></i> --}}
                         <span>Fichas</span>
                     </a>
@@ -189,7 +189,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
                     aria-expanded="true" aria-controls="collapseThree">
-                    <i class="fas fa-paste"></i>
+                    <i class="fas fa-cog"></i>
                     <span>Configuración</span>
                 </a>
                 <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
