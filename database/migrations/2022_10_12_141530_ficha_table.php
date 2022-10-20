@@ -24,6 +24,7 @@ return new class extends Migration
             ->onDelete('cascade');
             $table->foreignId('idEstadoFicha')->constrained('estadoFicha')->onUpdate('cascade')
             ->onDelete('cascade');
+            $table->boolean('estado')->default(1);
         });
     }
 

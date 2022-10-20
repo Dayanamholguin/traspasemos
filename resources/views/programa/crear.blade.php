@@ -23,7 +23,7 @@
                                 title="Requerido"> *</b></label>
                         <input id="version" type="text" name="descripcion" value="{{ old('descripcion') }}"
                             class="form-control @error('descripcion') is-invalid @enderror" name="descripcion" required
-                            autocomplete="descripcion" placeholder="Ingrese su descripción" />
+                            autocomplete="descripcion" placeholder="Ingrese nombre del programa" />
                         @error('descripcion')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -37,7 +37,7 @@
                                 title="Requerido"> *</b></label>
                         <input id="version" type="text" name="version" value="{{ old('version') }}"
                             class="form-control @error('version') is-invalid @enderror" name="version" required
-                            autocomplete="version" placeholder="Ingrese su descripción" />
+                            autocomplete="version" placeholder="Ingrese versión del programa" />
                         @error('version')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -51,7 +51,7 @@
                                 title="Requerido"> *</b></label>
                         <input id="link" type="text" name="link" value="{{ old('link') }}"
                             class="form-control @error('link') is-invalid @enderror" name="link" required
-                            autocomplete="link" placeholder="Ingrese su link" />
+                            autocomplete="link" placeholder="Ingrese el link" />
                         @error('link')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>

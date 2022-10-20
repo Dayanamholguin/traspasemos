@@ -10,6 +10,8 @@ use App\Http\Controllers\estadoFichaController;
 use App\Http\Controllers\programaController;
 use App\Http\Controllers\neeController;
 use App\Http\Controllers\institucionController;
+use App\Http\Controllers\datosAcademicosController;
+use App\Http\Controllers\fichaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -99,3 +101,20 @@ Route::get('/institucion/editar/{id}', [institucionController::class, 'editar'])
 Route::post('/institucion/actualizar/{id}', [institucionController::class, 'modificar']);
 Route::get('/institucion/cambiar/estado/{id}/{estado}', [institucionController::class, 'modificarEstado']);
 Route::get('/institucion/ver/{id}', [institucionController::class, 'ver']);
+//datosAcademicos
+Route::get('/datosAcademico', [datosAcademicosController::class, 'index']);
+Route::get('/datosAcademico/listar', [datosAcademicosController::class, 'listar']);
+Route::get('/datosAcademico/crear', [datosAcademicosController::class, 'crear']);
+Route::post('/datosAcademico/guardar', [datosAcademicosController::class, 'guardar']);
+Route::get('/datosAcademico/editar/{id}', [datosAcademicosController::class, 'editar']);
+Route::post('/datosAcademico/actualizar/{id}', [datosAcademicosController::class, 'modificar']);
+Route::get('/datosAcademico/cambiar/estado/{id}/{estado}', [datosAcademicosController::class, 'modificarEstado']);
+//ficha
+Route::get('/ficha', [fichaController::class, 'index']);
+Route::get('/ficha/listar', [fichaController::class, 'listar']);
+Route::get('/ficha/crear', [fichaController::class, 'crear']);
+Route::post('/ficha/guardar', [fichaController::class, 'guardar']);
+Route::get('/ficha/editar/{id}', [fichaController::class, 'editar']);
+Route::post('/ficha/actualizar/{id}', [fichaController::class, 'modificar']);
+Route::get('/ficha/cambiar/estado/{id}/{estado}', [fichaController::class, 'modificarEstado']);
+Route::get('/ficha/ver/{id}', [fichaController::class, 'ver']);

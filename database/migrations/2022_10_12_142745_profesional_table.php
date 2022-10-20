@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('apellidoProfesional');
             $table->string('telefono');
             $table->string('email')->unique();
+            $table->boolean('estado')->default(1);
         });
     }
 

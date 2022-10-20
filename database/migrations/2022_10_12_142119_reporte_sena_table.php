@@ -25,6 +25,7 @@ return new class extends Migration
             ->onDelete('cascade');
             $table->date('fechaReporte');
             $table->text('observacion');
+            $table->boolean('estado')->default(1);
             $table->timestamps();
         });
     }

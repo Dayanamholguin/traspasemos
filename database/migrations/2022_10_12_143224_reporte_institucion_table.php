@@ -30,6 +30,7 @@ return new class extends Migration
             $table->boolean('diagnosticado')->default(0);
             $table->date('fechaReporte');
             $table->text('recomendacion');
+            $table->boolean('estado')->default(1);
             $table->timestamps();
         });
     }

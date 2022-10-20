@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('telefono');
             $table->string('telefonoFijo');
             $table->string('foto');
+            $table->boolean('estado')->default(1);
         });
     }
 
