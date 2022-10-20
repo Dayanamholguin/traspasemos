@@ -12,6 +12,7 @@ use App\Http\Controllers\neeController;
 use App\Http\Controllers\institucionController;
 use App\Http\Controllers\datosAcademicosController;
 use App\Http\Controllers\fichaController;
+use App\Http\Controllers\profesionalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -118,3 +119,12 @@ Route::get('/ficha/editar/{id}', [fichaController::class, 'editar']);
 Route::post('/ficha/actualizar/{id}', [fichaController::class, 'modificar']);
 Route::get('/ficha/cambiar/estado/{id}/{estado}', [fichaController::class, 'modificarEstado']);
 Route::get('/ficha/ver/{id}', [fichaController::class, 'ver']);
+//profesional
+Route::get('/profesional', [profesionalController::class, 'index']);
+Route::get('/profesional/listar', [profesionalController::class, 'listar']);
+Route::get('/profesional/crear', [profesionalController::class, 'crear']);
+Route::post('/profesional/guardar', [profesionalController::class, 'guardar']);
+Route::get('/profesional/editar/{id}', [profesionalController::class, 'editar']);
+Route::post('/profesional/actualizar/{id}', [profesionalController::class, 'modificar']);
+Route::get('/profesional/cambiar/estado/{id}/{estado}', [profesionalController::class, 'modificarEstado']);
+Route::get('/profesional/ver/{id}', [profesionalController::class, 'ver']);

@@ -199,6 +199,7 @@
                         <a class="collapse-item" href="/discapacidad">Discapacidad</a>
                         <a class="collapse-item" href="/estadoFicha">Estado de ficha</a>
                         <a class="collapse-item" href="/estadoAprendiz">Estado del aprendiz</a>
+                        <a class="collapse-item" href="/profesional">Profesional</a>
                     </div>
                 </div>
             </li>   
