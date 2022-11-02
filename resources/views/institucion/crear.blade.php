@@ -17,7 +17,7 @@
                                 title="Requerido"> *</b></label>
                         <input id="nombre" type="text" name="nombre" value="{{ old('nombre') }}"
                             class="form-control @error('nombre') is-invalid @enderror" name="nombre" required
-                            autocomplete="nombre" placeholder="Ingrese su nombre" />
+                            autocomplete="nombre" placeholder="Ingrese el nombre de la institución" />
                         @error('nombre')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -31,7 +31,7 @@
                                 title="Requerido"> *</b></label>
                         <input id="nombreRector" type="text" name="nombreRector" value="{{ old('nombreRector') }}"
                             class="form-control @error('nombreRector') is-invalid @enderror" name="nombreRector" required
-                            autocomplete="nombreRector" placeholder="Ingrese su nombreRector" />
+                            autocomplete="nombreRector" placeholder="Ingrese nombre del rector" />
                         @error('nombreRector')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -45,7 +45,7 @@
                                 title="Requerido"> *</b></label>
                         <input id="nit" type="text" name="nit" value="{{ old('nit') }}"
                             class="form-control @error('nit') is-invalid @enderror" name="nit" required
-                            autocomplete="nit" placeholder="Ingrese su NIT" />
+                            autocomplete="nit" placeholder="Ingrese el NIT" />
                         @error('nit')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -59,7 +59,7 @@
                                 title="Requerido"> *</b></label>
                         <input id="docDane" type="text" name="docDane" value="{{ old('docDane') }}"
                             class="form-control @error('docDane') is-invalid @enderror" name="docDane" required
-                            autocomplete="docDane" placeholder="Ingrese su docDane" />
+                            autocomplete="docDane" placeholder="Ingrese el DANE" />
                         @error('docDane')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -73,7 +73,7 @@
                                 title="Requerido"> *</b></label>
                         <input id="telefono" type="text" name="telefono" value="{{ old('telefono') }}"
                             class="form-control @error('telefono') is-invalid @enderror" name="telefono" required
-                            autocomplete="telefono" placeholder="Ingrese su telefono" />
+                            autocomplete="telefono" placeholder="Ingrese el teléfono de la institución" />
                         @error('telefono')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -106,7 +106,7 @@
                                 title="Requerido"> *</b></label>
                         <input id="direccion" type="text" name="direccion" value="{{ old('direccion') }}"
                             class="form-control @error('direccion') is-invalid @enderror" name="direccion" required
-                            autocomplete="direccion" placeholder="Ingrese su direccion" />
+                            autocomplete="direccion" placeholder="Ingrese la dirección de la institución" />
                         @error('direccion')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>

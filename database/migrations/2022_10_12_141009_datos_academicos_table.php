@@ -23,6 +23,7 @@ return new class extends Migration
             ->onDelete('cascade');
             $table->foreignId('idEstadoAprendiz')->constrained('estadoAprendiz')->onUpdate('cascade')
             ->onDelete('cascade');
+            $table->boolean('estado')->default(1);
         });
     }
 

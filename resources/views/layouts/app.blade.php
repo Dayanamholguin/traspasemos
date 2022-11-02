@@ -87,7 +87,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="/datosAcademico">
                     <i class="fas fa-user-graduate"></i>
                     <span>Datos académicos</span>
                 </a>
@@ -146,7 +146,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="/ficha">
                         <i class="fas fa-book"></i>
                         {{-- <i class="fas fa-solid fa-person-circle-exclamation"></i> --}}
                         <span>Fichas</span>
@@ -199,6 +199,7 @@
                         <a class="collapse-item" href="/discapacidad">Discapacidad</a>
                         <a class="collapse-item" href="/estadoFicha">Estado de ficha</a>
                         <a class="collapse-item" href="/estadoAprendiz">Estado del aprendiz</a>
+                        <a class="collapse-item" href="/profesional">Profesional</a>
                     </div>
                 </div>
             </li>   
