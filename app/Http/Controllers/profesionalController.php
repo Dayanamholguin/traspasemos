@@ -140,7 +140,7 @@ class profesionalController extends Controller
     public function ver($id)
     {
         $profesional = Profesional::find($id);
-        $tipoDocumento = DB::table('tipoDocumento')->join("users", "users.idTipoDocumento", "tipoDocumento.id")->where("users.id", $usuario->id)->value('descripcion');
+        $tipoDocumento = DB::table('tipoDocumento')->join("profesional", "profesional.idTipoDocumento", "tipoDocumento.id")->where("profesional.id", $profesional->id)->value('descripcion');
         return compact("profesional", "tipoDocumento");
     }
     

@@ -22,7 +22,7 @@ class usuarioSeeder extends Seeder
             'numeroDocumento' => '1000000000',
             'nombre' => 'Administrador',
             'apellido' => 'Administrador',
-            'email' => 'dayanamonsalveholguin@gmail.com',
+            'email' => 'admin@yopmail.com',
             'estado' => 1,
             'password' => Hash::make("123456789"),
             'created_at' => "2022/05/02",

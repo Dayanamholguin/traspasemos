@@ -13,38 +13,167 @@ use Illuminate\Support\Facades\DB;
 
 class datosAcademicosController extends Controller
 {
+    private $programaBuscar;
+    public $institucionBuscar;
+    private $filtrar;
+    
+    // public function filtrarBuscar(Request $request){
+
+    //     //  self::$institucionBuscar = 'yes';
+    //     //  self::$institucionBuscar="no";
+    //     $this->filtrar = false;
+    //     // $this->institucionBuscar = "no";
+    // //    dd($this->institucionBuscar);
+    //     return $this->institucionBuscar;
+    //     dd($request->idInstitucion." ".$request->idPrograma);
+    // }
+    
     public function index()
     {
-        return view('datosAcademico.index');
+        // dd($this->filtrar);
+        // echo $this->variableDeInstancia;     
+        $institucion = institucion::select('*')->where('estado',1)->get();
+        $programa = Programa::select('*')->where('estado',1)->get();
+        return view('datosAcademico.index', compact("institucion", "programa"));
     }
 
+    public function filtrar($filtro)
+    {
+        $buscar = explode(",", $filtro);
+        $institucion = $buscar[0];
+        $programa = $buscar[1];
+        // echo $institucion + $programa;
+        if ($institucion=="" && $programa!=null) {
+            $datosAcademico = DatosAcademicos::select("datosAcademicos.*", DB::Raw("CONCAT(users.nombre, ' ', users.apellido) AS usuario"), "institucion.nombre as institucion", "programa.descripcion as programa", "estadoAprendiz.descripcion as estadoAprendiz")
+                ->join("users", "datosAcademicos.idUsuario", "users.id")
+                ->join("institucion", "datosAcademicos.idInstitucion", "institucion.id")
+                ->join("programa", "datosAcademicos.idPrograma", "programa.id")
+                ->join("estadoAprendiz", "datosAcademicos.idEstadoAprendiz", "estadoAprendiz.id")
+                ->where('datosAcademicos.idPrograma', $programa)
+                ->get();
+                return DataTables::of($datosAcademico)
+                ->editColumn("estado", function ($datosAcademico) {
+                    return $datosAcademico->estado == 1 ? "Activo" : "Inactivo";
+                })
+                ->addColumn('acciones', function ($datosAcademico) {
+                    $acciones = '<a href="/datosAcademico/editar/' . $datosAcademico->id . '" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fas fa-edit"></i></a> ';
+                        if ($datosAcademico->estado == 1) {
+                            $acciones .= '<a style="color:green;" href="/datosAcademico/cambiar/estado/' . $datosAcademico->id . '/0" data-toggle="tooltip" data-placement="top" title="Inactivar"><i class="fas fa-toggle-on"></i></a>';
+                        } else {
+                            $acciones .= '<a style="color:red;" href="/datosAcademico/cambiar/estado/' . $datosAcademico->id . '/1" data-toggle="tooltip" data-placement="top" title="Activar"><i class="fas fa-toggle-off"></i></a>';
+                        }
+                    return $acciones;
+                })
+                ->rawColumns(['acciones'])
+                ->make(true);
+        }elseif($programa=="" && $institucion!=null){
+            $datosAcademico = DatosAcademicos::select("datosAcademicos.*", DB::Raw("CONCAT(users.nombre, ' ', users.apellido) AS usuario"), "institucion.nombre as institucion", "programa.descripcion as programa", "estadoAprendiz.descripcion as estadoAprendiz")
+                ->join("users", "datosAcademicos.idUsuario", "users.id")
+                ->join("institucion", "datosAcademicos.idInstitucion", "institucion.id")
+                ->join("programa", "datosAcademicos.idPrograma", "programa.id")
+                ->join("estadoAprendiz", "datosAcademicos.idEstadoAprendiz", "estadoAprendiz.id")
+                ->where('datosAcademicos.idInstitucion', $institucion)
+                ->get();
+                return DataTables::of($datosAcademico)
+                ->editColumn("estado", function ($datosAcademico) {
+                    return $datosAcademico->estado == 1 ? "Activo" : "Inactivo";
+                })
+                ->addColumn('acciones', function ($datosAcademico) {
+                    $acciones = '<a href="/datosAcademico/editar/' . $datosAcademico->id . '" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fas fa-edit"></i></a> ';
+                        if ($datosAcademico->estado == 1) {
+                            $acciones .= '<a style="color:green;" href="/datosAcademico/cambiar/estado/' . $datosAcademico->id . '/0" data-toggle="tooltip" data-placement="top" title="Inactivar"><i class="fas fa-toggle-on"></i></a>';
+                        } else {
+                            $acciones .= '<a style="color:red;" href="/datosAcademico/cambiar/estado/' . $datosAcademico->id . '/1" data-toggle="tooltip" data-placement="top" title="Activar"><i class="fas fa-toggle-off"></i></a>';
+                        }
+                    return $acciones;
+                })
+                ->rawColumns(['acciones'])
+                ->make(true);
+        }elseif($programa!=null && $institucion!=null) {
+            $datosAcademico = DatosAcademicos::select("datosAcademicos.*", DB::Raw("CONCAT(users.nombre, ' ', users.apellido) AS usuario"), "institucion.nombre as institucion", "programa.descripcion as programa", "estadoAprendiz.descripcion as estadoAprendiz")
+                ->join("users", "datosAcademicos.idUsuario", "users.id")
+                ->join("institucion", "datosAcademicos.idInstitucion", "institucion.id")
+                ->join("programa", "datosAcademicos.idPrograma", "programa.id")
+                ->join("estadoAprendiz", "datosAcademicos.idEstadoAprendiz", "estadoAprendiz.id")
+                ->where('datosAcademicos.idPrograma', $programa)
+                ->where('datosAcademicos.idInstitucion', $institucion)
+                ->get();
+                return DataTables::of($datosAcademico)
+                ->editColumn("estado", function ($datosAcademico) {
+                    return $datosAcademico->estado == 1 ? "Activo" : "Inactivo";
+                })
+                ->addColumn('acciones', function ($datosAcademico) {
+                    $acciones = '<a href="/datosAcademico/editar/' . $datosAcademico->id . '" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fas fa-edit"></i></a> ';
+                        if ($datosAcademico->estado == 1) {
+                            $acciones .= '<a style="color:green;" href="/datosAcademico/cambiar/estado/' . $datosAcademico->id . '/0" data-toggle="tooltip" data-placement="top" title="Inactivar"><i class="fas fa-toggle-on"></i></a>';
+                        } else {
+                            $acciones .= '<a style="color:red;" href="/datosAcademico/cambiar/estado/' . $datosAcademico->id . '/1" data-toggle="tooltip" data-placement="top" title="Activar"><i class="fas fa-toggle-off"></i></a>';
+                        }
+                    return $acciones;
+                })
+                ->rawColumns(['acciones'])
+                ->make(true);
+        }elseif ($programa=="" && $institucion=="") {
+            $datosAcademico = DatosAcademicos::select("datosAcademicos.*", DB::Raw("CONCAT(users.nombre, ' ', users.apellido) AS usuario"), "institucion.nombre as institucion", "programa.descripcion as programa", "estadoAprendiz.descripcion as estadoAprendiz")
+                ->join("users", "datosAcademicos.idUsuario", "users.id")
+                ->join("institucion", "datosAcademicos.idInstitucion", "institucion.id")
+                ->join("programa", "datosAcademicos.idPrograma", "programa.id")
+                ->join("estadoAprendiz", "datosAcademicos.idEstadoAprendiz", "estadoAprendiz.id")
+                ->get();
+                return DataTables::of($datosAcademico)
+                ->editColumn("estado", function ($datosAcademico) {
+                    return $datosAcademico->estado == 1 ? "Activo" : "Inactivo";
+                })
+                ->addColumn('acciones', function ($datosAcademico) {
+                    $acciones = '<a href="/datosAcademico/editar/' . $datosAcademico->id . '" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fas fa-edit"></i></a> ';
+                        if ($datosAcademico->estado == 1) {
+                            $acciones .= '<a style="color:green;" href="/datosAcademico/cambiar/estado/' . $datosAcademico->id . '/0" data-toggle="tooltip" data-placement="top" title="Inactivar"><i class="fas fa-toggle-on"></i></a>';
+                        } else {
+                            $acciones .= '<a style="color:red;" href="/datosAcademico/cambiar/estado/' . $datosAcademico->id . '/1" data-toggle="tooltip" data-placement="top" title="Activar"><i class="fas fa-toggle-off"></i></a>';
+                        }
+                    return $acciones;
+                })
+                ->rawColumns(['acciones'])
+                ->make(true);
+        }
+    }
+    
     public function listar(Request $request)
     {
-        $datosAcademico = DatosAcademicos::select("datosAcademicos.*", DB::Raw("CONCAT(users.nombre, ' ', users.apellido) AS usuario"), "institucion.nombre as institucion", "programa.descripcion as programa", "estadoAprendiz.descripcion as estadoAprendiz")
-            ->join("users", "datosAcademicos.idUsuario", "users.id")
-            ->join("institucion", "datosAcademicos.idInstitucion", "institucion.id")
-            ->join("programa", "datosAcademicos.idPrograma", "programa.id")
-            ->join("estadoAprendiz", "datosAcademicos.idEstadoAprendiz", "estadoAprendiz.id")
-            ->get();
-            return DataTables::of($datosAcademico)
-            ->editColumn("estado", function ($datosAcademico) {
-                return $datosAcademico->estado == 1 ? "Activo" : "Inactivo";
-            })
-            ->addColumn('acciones', function ($datosAcademico) {
-                $acciones = '<a href="/datosAcademico/editar/' . $datosAcademico->id . '" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fas fa-edit"></i></a> ';
-                // $acciones .= '<a style="color:gray;"  href="javascript:void(0)" onclick="mostrardatos(' . $datosAcademico->id . ')" data-toggle="tooltip" data-placement="top" title="Ver"><i class="fas fa-info-circle"></i></a> ';
-                // $acciones .= '<a style="color:gray;"  href="javascript:void(0)" onclick="mostrarVentana(' . $datosAcademico->id . ')" data-toggle="tooltip" data-placement="top" title="Ver"><i class="fas fa-info-circle"></i></a> ';
-                // // if ($datosAcademico->id!=2) {
-                    if ($datosAcademico->estado == 1) {
-                        $acciones .= '<a style="color:green;" href="/datosAcademico/cambiar/estado/' . $datosAcademico->id . '/0" data-toggle="tooltip" data-placement="top" title="Inactivar"><i class="fas fa-toggle-on"></i></a>';
-                    } else {
-                        $acciones .= '<a style="color:red;" href="/datosAcademico/cambiar/estado/' . $datosAcademico->id . '/1" data-toggle="tooltip" data-placement="top" title="Activar"><i class="fas fa-toggle-off"></i></a>';
-                    }
-                // // }
-                return $acciones;
-            })
-            ->rawColumns(['acciones'])
-            ->make(true);
+        // dd($this->filtrar);
+        // dd($request->filtrar);
+        // if ($request->filtrar==1) {
+        //     dd("hola");
+        // }
+        // $this->filtrarBuscar();
+        // if ($this->filtrar) {
+            $datosAcademico = DatosAcademicos::select("datosAcademicos.*", DB::Raw("CONCAT(users.nombre, ' ', users.apellido) AS usuario"), "institucion.nombre as institucion", "programa.descripcion as programa", "estadoAprendiz.descripcion as estadoAprendiz")
+                ->join("users", "datosAcademicos.idUsuario", "users.id")
+                ->join("institucion", "datosAcademicos.idInstitucion", "institucion.id")
+                ->join("programa", "datosAcademicos.idPrograma", "programa.id")
+                ->join("estadoAprendiz", "datosAcademicos.idEstadoAprendiz", "estadoAprendiz.id")
+                ->get();
+                return DataTables::of($datosAcademico)
+                ->editColumn("estado", function ($datosAcademico) {
+                    return $datosAcademico->estado == 1 ? "Activo" : "Inactivo";
+                })
+                ->addColumn('acciones', function ($datosAcademico) {
+                    $acciones = '<a href="/datosAcademico/editar/' . $datosAcademico->id . '" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fas fa-edit"></i></a> ';
+                    // $acciones .= '<a style="color:gray;"  href="javascript:void(0)" onclick="mostrardatos(' . $datosAcademico->id . ')" data-toggle="tooltip" data-placement="top" title="Ver"><i class="fas fa-info-circle"></i></a> ';
+                    // $acciones .= '<a style="color:gray;"  href="javascript:void(0)" onclick="mostrarVentana(' . $datosAcademico->id . ')" data-toggle="tooltip" data-placement="top" title="Ver"><i class="fas fa-info-circle"></i></a> ';
+                    // // if ($datosAcademico->id!=2) {
+                        if ($datosAcademico->estado == 1) {
+                            $acciones .= '<a style="color:green;" href="/datosAcademico/cambiar/estado/' . $datosAcademico->id . '/0" data-toggle="tooltip" data-placement="top" title="Inactivar"><i class="fas fa-toggle-on"></i></a>';
+                        } else {
+                            $acciones .= '<a style="color:red;" href="/datosAcademico/cambiar/estado/' . $datosAcademico->id . '/1" data-toggle="tooltip" data-placement="top" title="Activar"><i class="fas fa-toggle-off"></i></a>';
+                        }
+                    // // }
+                    return $acciones;
+                })
+                ->rawColumns(['acciones'])
+                ->make(true);
+        
+        // }
     }
 
     public function crear()

@@ -109,6 +109,7 @@ Route::get('/datosAcademico/crear', [datosAcademicosController::class, 'crear'])
 Route::post('/datosAcademico/guardar', [datosAcademicosController::class, 'guardar']);
 Route::get('/datosAcademico/editar/{id}', [datosAcademicosController::class, 'editar']);
 Route::post('/datosAcademico/actualizar/{id}', [datosAcademicosController::class, 'modificar']);
+Route::get('/datosAcademico/filtrar/{filtro}', [datosAcademicosController::class, 'filtrar']);
 Route::get('/datosAcademico/cambiar/estado/{id}/{estado}', [datosAcademicosController::class, 'modificarEstado']);
 //ficha
 Route::get('/ficha', [fichaController::class, 'index']);

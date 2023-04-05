@@ -153,7 +153,7 @@ class usuarioController extends Controller
     public function modificarEstado($id, $estado)
     {
         $usuario = User::find($id);
-        if ($usuario == null) {
+        if ($usuario == null || $usuario->id==1) {
             Flash("No se puede modificar el estado de este usuario")->error();
             return redirect("/usuario");
         }
